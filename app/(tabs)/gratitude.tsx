@@ -1,11 +1,18 @@
 import {
-    Button,
+    Pressable,
     type NativeSyntheticEvent,
     StyleSheet,
     type TextInputContentSizeChangeEventData,
 } from "react-native";
 import { useEffect, useState } from "react";
-import { Text, ScrollView, TextInput, View } from "@/components/Themed";
+import {
+    Text,
+    ScrollView,
+    TextInput,
+    View,
+    useThemeColor,
+} from "@/components/Themed";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 import AppStyles from "@/constants/Styles";
 
@@ -50,12 +57,17 @@ export default function Gratitude() {
                 onContentSizeChange={(e) => updateInputHeight(e)}
                 multiline
             />
-            <Button
+            <Pressable
                 style={styles.button}
-                title="+"
                 accessibilityLabel="save gratitude"
                 onPress={saveGratitude}
-            />
+            >
+                <AntDesign
+                    name="pluscircle"
+                    size={24}
+                    color={useThemeColor({}, "tint")}
+                />
+            </Pressable>
             <ScrollView>
                 {gratitudes.map((g, i) => (
                     <View key={i} style={styles.inputBox}>
@@ -97,5 +109,6 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 0,
+        // backgroundColor: AppStyles.
     },
 });
