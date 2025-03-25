@@ -1,10 +1,4 @@
-import {
-    Pressable,
-    type NativeSyntheticEvent,
-    StyleSheet,
-    type TextInputContentSizeChangeEventData,
-} from "react-native";
-import { useEffect, useState } from "react";
+import { Pressable, StyleSheet } from "react-native";
 import {
     Text,
     ScrollView,
@@ -13,30 +7,17 @@ import {
     useThemeColor,
 } from "@/components/Themed";
 import AntDesign from "@expo/vector-icons/AntDesign";
-
-import AppStyles from "@/constants/Styles";
+import useIndex from "../../components/customHooks/useIndex";
 
 export default function Gratitude() {
-    const [currentGratitude, setCurrentGratitude] = useState("");
-    const [gratitudes, setGratitudes] = useState<string[]>([]);
-    const [inputHeight, setInputHeight] = useState<number>();
-
-    const updateInputHeight = (
-        event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>
-    ) => {
-        const { height } = event.nativeEvent.contentSize;
-        const newHeight = Math.max(inputHeight ?? 0, height);
-        setInputHeight(newHeight);
-    };
-
-    const saveGratitude = () => {
-        if (currentGratitude) {
-            setGratitudes([...gratitudes, currentGratitude]);
-            setCurrentGratitude("");
-
-            // save to as
-        }
-    };
+    const {
+        currentGratitude,
+        setCurrentGratitude,
+        gratitudes,
+        updateInputHeight,
+        inputHeight,
+        saveGratitude,
+    } = useIndex();
 
     return (
         <View style={styles.container}>
@@ -50,8 +31,15 @@ export default function Gratitude() {
             <Text style={styles.header}>
                 What's Good? What are you greatful for?
             </Text>
+
             <TextInput
-                style={[styles.input, { height: inputHeight }]}
+                style={[
+                    styles.input,
+                    {
+                        height: inputHeight,
+                        backgroundColor: "white",
+                    },
+                ]}
                 value={currentGratitude}
                 onChangeText={(text) => setCurrentGratitude(text)}
                 onContentSizeChange={(e) => updateInputHeight(e)}
@@ -64,14 +52,23 @@ export default function Gratitude() {
             >
                 <AntDesign
                     name="pluscircle"
-                    size={24}
-                    color={useThemeColor({}, "tint")}
+                    size={40}
+                    color={useThemeColor({}, "tintTwo")}
                 />
             </Pressable>
+
             <ScrollView>
-                {gratitudes.map((g, i) => (
-                    <View key={i} style={styles.inputBox}>
-                        <Text style={styles.inputNumber}>{i + 1}.</Text>
+                {gratitudes.map((day, i) => (
+                    <View key={i}>
+                        <Text>{day.date}</Text>
+                        {day.gratitudes.map((gratitude, j) => (
+                            <Text key={j}>
+                                {j + 1}
+                                {gratitude}
+                            </Text>
+                        ))}
+                        <Text>-----------------</Text>
+                        <Text>-----------------</Text>
                     </View>
                 ))}
             </ScrollView>
@@ -95,20 +92,20 @@ const styles = StyleSheet.create({
     input: {
         width: "100%",
         borderWidth: 1,
-        marginBlock: 20,
+        marginTop: 20,
         padding: 10,
         borderRadius: 5,
         textAlignVertical: "top",
     },
     inputBox: {
+        position: "relative",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 20,
     },
     button: {
-        marginTop: 0,
-        // backgroundColor: AppStyles.
+        marginLeft: "auto",
+        marginBlock: 2,
     },
 });

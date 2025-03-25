@@ -27,7 +27,7 @@ export default function TabLayout() {
             }}
         >
             <Tabs.Screen
-                name="gratitude"
+                name="index"
                 options={{
                     title: "What's Good?",
                     tabBarIcon: ({ color }) => (
