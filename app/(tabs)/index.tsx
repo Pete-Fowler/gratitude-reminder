@@ -46,15 +46,10 @@ export default function Gratitude() {
                 multiline
             />
             <Pressable
-                style={styles.button}
                 accessibilityLabel="save gratitude"
                 onPress={saveGratitude}
             >
-                <AntDesign
-                    name="pluscircle"
-                    size={40}
-                    color={useThemeColor({}, "tint")}
-                />
+                <AntDesign style={styles.button} name="pluscircle" size={40} />
             </Pressable>
 
             <ScrollView>
@@ -93,8 +88,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     input: {
+        backgroundColor: useThemeColor({}, "tint"),
         width: "100%",
-        borderWidth: 1,
+        border: "none",
         marginTop: 20,
         padding: 10,
         borderRadius: 10,
@@ -109,13 +105,13 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "flex-start",
         padding: 20,
-        border: "1px solid black",
         borderRadius: 10,
         marginTop: 20,
     },
     button: {
         marginLeft: "auto",
         marginBlock: 2,
+        color: useThemeColor({}, "tintTwo"),
     },
     date: {
         fontSize: 16,
