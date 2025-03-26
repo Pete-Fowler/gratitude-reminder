@@ -59,16 +59,19 @@ export default function Gratitude() {
 
             <ScrollView>
                 {gratitudes.map((day, i) => (
-                    <View key={i}>
-                        <Text>{day.date}</Text>
+                    <View key={i} style={styles.historyBox}>
+                        <Text style={styles.date}>
+                            {new Date(day.date).toLocaleDateString("en-US", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric",
+                            })}
+                        </Text>
                         {day.gratitudes.map((gratitude, j) => (
                             <Text key={j}>
-                                {j + 1}
-                                {gratitude}
+                                {j + 1}.{gratitude}
                             </Text>
                         ))}
-                        <Text>-----------------</Text>
-                        <Text>-----------------</Text>
                     </View>
                 ))}
             </ScrollView>
@@ -94,18 +97,27 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginTop: 20,
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 10,
         textAlignVertical: "top",
     },
-    inputBox: {
+    historyBox: {
+        backgroundColor: useThemeColor({}, "tint"),
         position: "relative",
         display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "column",
+        gap: 5,
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        padding: 20,
+        border: "1px solid black",
+        borderRadius: 10,
+        marginTop: 20,
     },
     button: {
         marginLeft: "auto",
         marginBlock: 2,
+    },
+    date: {
+        fontSize: 16,
     },
 });
