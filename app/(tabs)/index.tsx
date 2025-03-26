@@ -53,7 +53,7 @@ export default function Gratitude() {
                 <AntDesign
                     name="pluscircle"
                     size={40}
-                    color={useThemeColor({}, "tintTwo")}
+                    color={useThemeColor({}, "tint")}
                 />
             </Pressable>
 
