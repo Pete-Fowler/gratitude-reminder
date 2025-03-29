@@ -37,7 +37,6 @@ export default function Gratitude() {
                     styles.input,
                     {
                         height: inputHeight,
-                        backgroundColor: "white",
                     },
                 ]}
                 value={currentGratitude}
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
     button: {
         marginLeft: "auto",
         marginBlock: 2,
-        color: useThemeColor({}, "tintTwo"),
+        color: useThemeColor({}, "tint"),
     },
     date: {
         fontSize: 16,

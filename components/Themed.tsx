@@ -74,7 +74,7 @@ export function TextInput(props: TextInputProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor(
         { light: lightColor, dark: darkColor },
-        "secondaryBackground"
+        "background"
     );
 
     return (
@@ -89,7 +89,7 @@ export function Pressable(props: PressableProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor(
         { light: lightColor, dark: darkColor },
-        "secondaryBackground"
+        "background"
     );
 
     return (
