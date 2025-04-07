@@ -29,7 +29,7 @@ export default function Gratitude() {
                 })}
             </Text>
             <Text style={styles.header}>
-                What's Good? What are you greatful for?
+                What are you grateful for?
             </Text>
 
             <TextInput
