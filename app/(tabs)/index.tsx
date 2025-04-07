@@ -21,16 +21,16 @@ export default function Gratitude() {
 
     return (
         <View style={styles.container}>
-            <Text>
+            <Text style={styles.date}>
                 {new Date().toLocaleDateString("en-US", {
                     month: "long",
                     day: "numeric",
                     year: "numeric",
                 })}
             </Text>
-            <Text style={styles.header}>
-                What are you grateful for?
-            </Text>
+            <Text style={styles.header}>What are you grateful for?</Text>
+
+            <View style={styles.horizontalLine} />
 
             <TextInput
                 style={[
@@ -43,6 +43,8 @@ export default function Gratitude() {
                 onChangeText={(text) => setCurrentGratitude(text)}
                 onContentSizeChange={(e) => updateInputHeight(e)}
                 multiline
+                placeholder="Enter your gratitude here..."
+                placeholderTextColor="gray"
             />
             <Pressable
                 accessibilityLabel="save gratitude"
@@ -76,22 +78,27 @@ export default function Gratitude() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 60,
+        padding: 20,
     },
     header: {
-        fontSize: 20,
+        fontSize: 30,
         fontWeight: "bold",
+    },
+    horizontalLine: {
+        height: 3,
+        backgroundColor: "black",
+        marginVertical: 10,
     },
     inputNumber: {
         fontSize: 20,
         marginRight: 10,
     },
     input: {
-        backgroundColor: useThemeColor({}, "tint"),
+        fontSize: 20,
         width: "100%",
-        border: "none",
         marginTop: 20,
-        padding: 10,
+        padding: 2,
+        outlineStyle: "none",
         borderRadius: 10,
         textAlignVertical: "top",
     },
@@ -113,6 +120,6 @@ const styles = StyleSheet.create({
         color: useThemeColor({}, "tint"),
     },
     date: {
-        fontSize: 16,
+        fontSize: 24,
     },
 });
