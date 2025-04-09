@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     horizontalLine: {
         height: 3,
         backgroundColor: "black",
-        marginVertical: 10,
+        marginVertical: 20,
     },
     inputNumber: {
         fontSize: 20,
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     input: {
         fontSize: 20,
         width: "100%",
-        marginTop: 20,
         padding: 2,
         outlineStyle: "none",
         borderRadius: 10,
@@ -117,9 +116,10 @@ const styles = StyleSheet.create({
     button: {
         marginLeft: "auto",
         marginBlock: 2,
-        color: useThemeColor({}, "tint"),
+        color: useThemeColor({}, "tintLighter"),
     },
     date: {
         fontSize: 24,
+        marginBottom: 10,
     },
 });
