@@ -1,10 +1,17 @@
 import { StyleSheet } from "react-native";
+import Colors from "./Colors";
+import { useColorScheme } from "@/components/useColorScheme";
 
-const AppStyles = StyleSheet.create({
-    link: {
-        color: "#8EF7F4",
-        textDecorationLine: "underline",
-    },
-});
+
+const AppStyles = () => {
+    const colorScheme = useColorScheme();
+
+    return StyleSheet.create({
+        link: {
+            color: Colors[colorScheme ?? "light"].tintLighter, // Use tintLighter from Colors
+            textDecorationLine: "underline",
+        },
+    });
+};
 
 export default AppStyles;

@@ -17,15 +17,23 @@ function TabBarIcon(props: {
 export default function TabLayout() {
     const colorScheme = useColorScheme();
 
+    const iconSize = 30;
+
     return (
         <Tabs
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme ?? "light"].tintLighter,
                 tabBarStyle: {
+                    height: 70,
                     backgroundColor: Colors[colorScheme ?? "light"].background,
                 },
                 tabBarLabelStyle: {
                     fontFamily: "Lora-Regular",
+                    fontSize: 18, 
+                    fontWeight: "999",
+                },
+                tabBarIconStyle: {
+                    marginBottom: 5,
                 },
                 // Disable the static render of the header on web
                 // to prevent a hydration error in React Navigation v6.
@@ -37,7 +45,7 @@ export default function TabLayout() {
                 options={{
                     title: "Write Gratitude",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="book" color={color} />
+                        <TabBarIcon name="book" size={iconSize} color={color} />
                     ),
                     //
                     headerShown: false,
@@ -46,9 +54,9 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="two"
                 options={{
-                    title: "Tab Two",
+                    title: "Review",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="code" color={color} />
+                        <TabBarIcon name="code" size={iconSize} color={color} />
                     ),
                     headerShown: false,
                 }}

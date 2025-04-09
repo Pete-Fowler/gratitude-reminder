@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import Colors from "@/constants/Colors";
 import AppStyles from "@/constants/Styles";
 
 import { Text, View } from "@/components/Themed";
@@ -8,7 +7,7 @@ import { ExternalLink } from "@/components/ExternalLink";
 export default function About() {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>What's Good?</Text>
+            <Text style={styles.title}>Gratitude Reminder</Text>
             <View
                 style={styles.separator}
                 lightColor="#eee"
@@ -21,7 +20,7 @@ export default function About() {
             </Text>
             <Text style={styles.paragraph}>
                 <ExternalLink
-                    style={AppStyles.link}
+                    style={AppStyles().link}
                     href="https://www.health.harvard.edu/healthbeat/giving-thanks-can-make-you-happier"
                 >
                     Research
